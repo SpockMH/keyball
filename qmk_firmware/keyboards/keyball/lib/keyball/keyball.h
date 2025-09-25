@@ -45,9 +45,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define KEYBALL_SCROLLSNAP_RESET_TIMER 100
 #endif
 
-#ifndef KEYBALL_SCROLLSNAP_TENSION_THRESHOLD
-#    define KEYBALL_SCROLLSNAP_TENSION_THRESHOLD 12
-#endif
+//#ifndef KEYBALL_SCROLLSNAP_TENSION_THRESHOLD
+//#    define KEYBALL_SCROLLSNAP_TENSION_THRESHOLD 12
+//#endif
 
 /// Specify SROM ID to be uploaded PMW3360DW (optical sensor).  It will be
 /// enabled high CPI setting or so.  Valid valus are 0x04 or 0x81.  Define this
@@ -90,33 +90,34 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Types
 
 enum keyball_keycodes {
-    KBC_RST  = QK_KB_0, // Keyball configuration: reset to default
+    //KBC_RST  = QK_KB_0, // Keyball configuration: reset to default
     KBC_SAVE = QK_KB_1, // Keyball configuration: save to EEPROM
 
     CPI_I100 = QK_KB_2, // CPI +100 CPI
     CPI_D100 = QK_KB_3, // CPI -100 CPI
-    CPI_I1K  = QK_KB_4, // CPI +1000 CPI
-    CPI_D1K  = QK_KB_5, // CPI -1000 CPI
+    //CPI_I1K  = QK_KB_4, // CPI +1000 CPI
+    //CPI_D1K  = QK_KB_5, // CPI -1000 CPI
 
     // In scroll mode, motion from primary trackball is treated as scroll
     // wheel.
-    SCRL_TO  = QK_KB_6, // Toggle scroll mode
-    SCRL_MO  = QK_KB_7, // Momentary scroll mode
-    SCRL_DVI = QK_KB_8, // Increment scroll divider
-    SCRL_DVD = QK_KB_9, // Decrement scroll divider
-
-    SSNP_VRT = QK_KB_13, // Set scroll snap mode as vertical
-    SSNP_HOR = QK_KB_14, // Set scroll snap mode as horizontal
-    SSNP_FRE = QK_KB_15, // Set scroll snap mode as disable (free scroll)
+    //SCRL_TO  = QK_KB_6, // Toggle scroll mode
+    //SCRL_MO  = QK_KB_7, //
+    
+    //SCRL_DVI = QK_KB_8, // Increment scroll divider
+    //SCRL_DVD = QK_KB_9, // Decrement scroll divider
+    
+    //SSNP_VRT = QK_KB_13, // Set scroll snap mode as vertical
+    //SSNP_HOR = QK_KB_14, // Set scroll snap mode as horizontal
+    //SSNP_FRE = QK_KB_15, // Set scroll snap mode as disable (free scroll)
 
     // Auto mouse layer control keycodes.
     // Only works when POINTING_DEVICE_AUTO_MOUSE_ENABLE is defined.
-    AML_TO   = QK_KB_10, // Toggle automatic mouse layer
-    AML_I50  = QK_KB_11, // Increment automatic mouse layer timeout
-    AML_D50  = QK_KB_12, // Decrement automatic mouse layer timeout
-
+    //AML_TO   = QK_KB_10, // Toggle automatic mouse layer
+    //AML_I50  = QK_KB_11, // Increment automatic mouse layer timeout
+    //AML_D50  = QK_KB_12, // Decrement automatic mouse layer timeout
+    
     // User customizable 32 keycodes.
-    KEYBALL_SAFE_RANGE = QK_USER_0,
+    //KEYBALL_SAFE_RANGE = QK_USER_0,
 };
 
 typedef union {
@@ -213,16 +214,16 @@ void keyball_on_apply_motion_to_mouse_scroll(keyball_motion_t *m, report_mouse_t
 
 /// keyball_oled_render_ballinfo renders ball information to OLED.
 /// It uses just 21 columns to show the info.
-void keyball_oled_render_ballinfo(void);
+//void keyball_oled_render_ballinfo(void);
 
 /// keyball_oled_render_keyinfo renders last processed key information to OLED.
 /// It shows column, row, key code, and key name (if available).
-void keyball_oled_render_keyinfo(void);
+//void keyball_oled_render_keyinfo(void);
 
 /// keyball_oled_render_layerinfo renders current layer status information to
 /// OLED.  It shows layer mask with number (1~f) for active layers and '_' for
 /// inactive layers.
-void keyball_oled_render_layerinfo(void);
+//void keyball_oled_render_layerinfo(void);
 
 /// keyball_get_scroll_mode gets current scroll mode.
 bool keyball_get_scroll_mode(void);
@@ -260,7 +261,7 @@ void keyball_set_scroll_div(uint8_t div);
 ///
 ///     CPI = v * 100
 uint8_t keyball_get_cpi(void);
-
+void set_last_cpi(void);
 /// keyball_set_cpi changes CPI of trackball.
 /// Valid values are 0 to 120. If it is 0, KEYBALL_CPI_DEFAULT will be used,
 /// otherwise the actual CPI value will be the set value multiplied by 100:
@@ -270,3 +271,9 @@ uint8_t keyball_get_cpi(void);
 /// In addition, if you do not upload SROM, the maximum value will be limited
 /// to 35 (3500CPI).
 void keyball_set_cpi(uint8_t cpi);
+
+
+void scrl_tension_inc(void);
+
+void scrl_tension_dec(void);
+uint8_t get_scrl_tension(void);

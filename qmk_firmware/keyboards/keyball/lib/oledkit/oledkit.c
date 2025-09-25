@@ -22,6 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 __attribute__((weak)) void oledkit_render_logo_user(void) {
     // Require `OLED_FONT_H "keyboards/keyball/lib/logofont/logofont.c"`
+    /*
     char ch = 0x80;
     for (int y = 0; y < 3; y++) {
         oled_write_P(PSTR("  "), false);
@@ -30,6 +31,7 @@ __attribute__((weak)) void oledkit_render_logo_user(void) {
         }
         oled_advance_page(false);
     }
+    */
 }
 
 __attribute__((weak)) void oledkit_render_info_user(void) {
@@ -40,22 +42,15 @@ __attribute__((weak)) bool oled_task_user(void) {
     if (is_keyboard_master()) {
         oledkit_render_info_user();
     } else {
-        oledkit_render_logo_user();
-    }
-    return true;
-}
-
-__attribute__((weak)) oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    // Logo needs to be rotated 180 degrees.
-    //
     // A typical OLED has a narrow margin on the left side near the origin, and
     // a wide margin on the right side. The Keyball logo consists of three
     // lines. If the logo is displayed on an OLED consisting of four lines, the
-    // margin on the right side will be too large and the balance is not good.
+    //    kljkl.aakjkljl
+    // margin on the rklight side will be too large and the balance is not good.
     //
     // Additionally, by rotating it, the left side of the logo will be above
     // the OLED screen, giving it a natural look.
     return !is_keyboard_master() ? OLED_ROTATION_180 : rotation;
 }
-
+*/
 #endif // OLED_ENABLE

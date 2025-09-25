@@ -51,25 +51,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #        define RGBLIGHT_LIMIT_VAL  150 // limitated for power consumption
 #    endif
 #    ifndef RGBLIGHT_VAL_STEP
-#        define RGBLIGHT_VAL_STEP   15
+#        define RGBLIGHT_VAL_STEP   50
 #    endif
 #    ifndef RGBLIGHT_HUE_STEP
-#        define RGBLIGHT_HUE_STEP   17
+#        define RGBLIGHT_HUE_STEP   4
 #    endif
 #    ifndef RGBLIGHT_SAT_STEP
-#        define RGBLIGHT_SAT_STEP   17
+#        define RGBLIGHT_SAT_STEP   255
 #    endif
 #endif
 #ifdef RGB_MATRIX_ENABLE
 #    define RGB_MATRIX_SPLIT    { 30, 30 }
 #endif
-
+/*
 #ifndef OLED_FONT_H
 #    define OLED_FONT_H "keyboards/keyball/lib/logofont/logofont.c"
-#    define OLED_FONT_START 32
-#    define OLED_FONT_END 195
+#    define OLED_FONT_START 48
+#    define OLED_FONT_END 57
 #endif
-
+*/
 #if !defined(LAYER_STATE_8BIT) && !defined(LAYER_STATE_16BIT) && !defined(LAYER_STATE_32BIT)
 #    define LAYER_STATE_8BIT
 #endif
